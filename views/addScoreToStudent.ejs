@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enrolled Student Data</title>
+        <style>
+            table {
+                width: 100%;
+            }
+            table, th, td {
+                text-align: center;
+                border-bottom: 2px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            h2,h3,h4 {
+                text-align: center;
+                color : blue;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        
+            
+        <h2 ><%= subject.subjectName  %></h2>
+        <h4 ><a href = "/subjects"  >return to subject list</a></h4>
+        <table>
+                <tr>
+                    <th>Name</th>            
+                    <th>Score</th>                    
+                </tr>
+                    <% arrayStudents.forEach(element => { %>
+                    <tr>
+                        <td><%= `${element.firstName} ${element.lastName}` %></td>
+                        <% if(!element.StudentSubject.score ) { %>
+                            <td><a href="/subjects/<%= element.StudentSubject.id %>/give-score">Give Score</a></td>
+                       <% } else { %>
+                        <td><a href="/subjects/<%= element.StudentSubject.id %>/give-score"> <%= element.StudentSubject.score %> </a> </td>
+                    <%   } %>                        
+                    </tr>
+                    <%})%>
+            </table>
+    </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher Form</title>
+</head>
+<style>
+    table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h1,h2,h3 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+        h4 {
+            text-align: center;
+            color : red;
+            padding: 5px;
+            background-color: pink;
+        }
+    </style>
+
+<body>
+    <h1>Form for new teacher</h1>
+    <% if (error) { %>
+        <h4> <%- error  %> </h4>
+    <% }  %>
+    <form action="/teachers/add" method="POST">
+        <label><b>First Name :</b></label> <br>
+        <input type="text" name="firstName" required> <br>
+        <label><b>Last Name :</b></label> <br>
+        <input type="text" name="lastName" required> <br>
+        <label><b>Email :</b></label> <br>
+        <input type="text" name="email" required> <br>
+        <label><b>Subject :</b></label> <br>
+        <select name="subjectId">
+            <% data.forEach(elemen => { %>
+                <option value="<%= elemen.id %>"><%- elemen.subjectName %></option>
+           <% }) %>
+          </select>
+           <br> <br>
+        <button type="submit">Add Teachers</button>
+    </form>
+</body>
+
+</html>

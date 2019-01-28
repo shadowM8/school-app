@@ -1,1 +1,1 @@
-# school-app
+# sequelize-one-to-many

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Enrolled Student Data</title>
+        <style>
+            table {
+                width: 100%;
+            }
+            table, th, td {
+                text-align: center;
+                border-bottom: 2px solid black;
+                border-collapse: collapse;
+                padding: 5px;
+            }
+            h2,h3,h4 {
+                text-align: center;
+                color : blue;
+                padding: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        
+            
+        <h2 >Give Score Form </h2>
+        <h4 ><a href = "/subjects"  >return to subject list</a></h4>
+        <form action="/subjects/<%= studentSubjectData.id %>/give-score" method="POST">
+            <label><b>Score :</b></label> <br>
+            <% if(!studentSubjectData.score) { %>
+                <input type="text" name="score" required> <br>
+                <button type="submit">Give Score</button>
+           <% } else { %>
+                <input type="text" name="score" value="<%= studentSubjectData.score %>" required> <br>
+                <button type="submit"> Edit Score</button> 
+          <% } %>
+            
+        </form>
+    </body>
+</html>

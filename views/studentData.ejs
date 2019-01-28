@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Student</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h2,h3,h4 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>STUDENTS DATA</h2>
+    <h4><a href="/">Kembali ke halaman home</a></h4>
+    <h3><a href="/students/add">add student</a></h3>
+    <table >
+        <tr>
+            <th>no</th>
+            <th>Student Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Action</th>
+            <th>Option</th>
+        </tr>
+        <% let i = 1 %>
+        <% allStudentData.forEach(result=> { %>
+            <tr>
+                <td> <%= i %> </td>
+                <td> <%= result.id %> </td>
+                <td> <%= result.firstName %> </td>
+                <td> <%= result.lastName %> </td>
+                <td> <%= result.email %> </td>
+                <td> <a href="/students/<%- result.id %>/add-subject"> Add Subject</a></td>
+                <td> <a href="/students/edit/<%- result.id%>">Edit</a> | <a href="/students/delete/<%-result.id%>" onclick="return confirm('Delete this student?')"> Delete</a> </td>
+                
+            </tr>
+            <% i++ %>
+        <% }) %>
+    </table>
+   
+</body>
+</html>

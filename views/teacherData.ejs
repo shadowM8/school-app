@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Teacher</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h2,h3,h4 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>ALL TEACHER DATA</h2>
+    <h4><a href="/">Kembali ke halaman home</a></h4>
+    <h3><a href="/teachers/add">add teacher</a></h3>
+    <table >
+        <tr>
+            <th>no</th>
+            <th>Teacher Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Subject</th>
+            <th>Option</th>
+        </tr>
+        <% let i = 1 %>
+        <% allTeacher.forEach(result=> { %>
+            <tr>
+                <td> <%= i %> </td>
+                <td> <%= result.id %> </td>
+                <td> <%= result.firstName %> </td>
+                <td> <%= result.lastName %> </td>
+                <td> <%= result.email %> </td>
+                <% if (!result.Subject) { %>
+                    <td> Unassigned </td>
+                <% } else { %>
+                    <td> <%= result.Subject.subjectName %> </td>
+                <% } %>
+                <td> <a href="/teachers/edit/<%- result.id%>">Edit</a> | <a href="/teachers/delete/<%-result.id%>" onclick="return confirm('Delete this teacher?')"> Delete</a> </td>
+            </tr>
+            <% i++ %>
+        <% }) %>
+    </table>
+   
+</body>
+</html>

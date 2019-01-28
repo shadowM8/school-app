@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Teacher Form</title>
+</head>
+<style>
+    table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h1,h2,h3 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+    </style>
+
+<body>
+    <h1>Form for edit teacher <%= fullname %> </h1>
+    <form action="/teachers/edit/<%- teacher.id %>" method="POST">
+        <label><b>First Name :</b></label> <br>
+        <input type="text" name="firstName" value="<%= teacher.firstName %>" required> <br>
+        <label><b>Last Name :</b></label> <br>
+        <input type="text" name="lastName" value="<%= teacher.lastName %>" required> <br>
+        <label><b>Email :</b></label> <br>
+        <input type="text" name="email" value="<%= teacher.email %>" required> <br>
+        <label><b>Subject :</b></label> <br>
+        <input type="text" name="subjectId" value="<%= teacher.subjectId %>" > <br>
+        <button type="submit">Add Teachers</button>
+    </form>
+</body>
+
+</html>

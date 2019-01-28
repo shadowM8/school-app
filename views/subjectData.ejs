@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Data Subject</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h2,h3,h4 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h2>ALL SUBJECTS DATA</h2>
+    <h4><a href="/">Kembali ke halaman home</a></h4>
+    <h3><a href="/subjects/add">add teacher</a></h3>
+    <table >
+        <tr>
+            <th>no</th>
+            <th>Subject Id</th>
+            <th>Subject Name</th>
+            <th>Teacher</th>
+            <th>Action</th>
+        </tr>
+        <% let i = 1 %>
+        <% subjectData.forEach(result=> { %>
+            <tr>
+                <td> <%= i %> </td>
+                <td> <%= result.id %> </td>
+                <td> <%= result.subjectName %> </td>
+                
+                <% if (!result.Teachers) { %>
+                    <td> Unassigned </td>
+                <% } else { %>
+                    <% let j = 1 %>
+                    <td>
+                    <% result.Teachers.forEach(teacher=> { %>
+                         <%=`${j}.  ${teacher.getFullName()}` %> 
+                         <br>
+                        <% j++ %>
+                   <% }) %>
+                </td>
+                <% } %>
+
+                <td><a href="/subjects/<%- result.id %>/enrolled-students">Enrolled Students</a></td>
+            </tr>
+            <% i++ %>
+        <% }) %>
+    </table>
+   
+</body>
+</html>

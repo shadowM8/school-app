@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>add subject to student</title>
+    <style>
+        table {
+            width: 100%;
+        }
+        table, th, td {
+            text-align: center;
+            border-bottom: 2px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
+        h2,h3,h4 {
+            text-align: center;
+            color : blue;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    
+<h1 >Add Subject to Student</h1>
+<h4 ><a href = "/students"  >All student data</a></h4>
+<form action="/students/<%= studentData.id %>/add-subject" method = "POST">
+    <label for= "first_name"><b>First Name</b></label><br>
+    <input size =50 type="text" name="first_name" value="<%= studentData.firstName %>"  required><br>
+    <label for= "last_name"><b>Last Name</b></label><br>
+    <input size =50 type="text" name="last_name" value="<%= studentData.lastName %>" required><br>
+    <label for= "email"><b>Email</b></label><br>
+    <input size =50 type="text" name="email" value="<%= studentData.email %>"  required><br>
+    <label for="SubjectId"><b>Choose Subject</b></label><br>        
+    <select name = "subjectId">
+        <% allSubjectData.forEach(element=> { %>                             
+            <option size =50  value='<%= element.id %>'> <%= element.subjectName %></option>
+        <%  }) %>
+    </select> <br> <br>
+<button type="submit">Add Subject</button>
+</form>
+</body>
+</html>
